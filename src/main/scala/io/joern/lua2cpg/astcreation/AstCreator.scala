@@ -586,6 +586,7 @@ private def astForNumericForStmt(stmt: LuaNumericForStmt): Ast = {
   protected def column(luaNode: LuaNode): Option[Integer] = luaNode.attributes.beginColumn
   protected def lineEnd(luaNode: LuaNode): Option[Integer] = luaNode.attributes.endLine
   protected def columnEnd(luaNode: LuaNode): Option[Integer] = luaNode.attributes.endColumn
+  protected def code(luaNode: LuaNode): String               = ""
 }
 
 object AstCreator {

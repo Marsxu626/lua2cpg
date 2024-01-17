@@ -8,6 +8,6 @@ libraryDependencies ++= Seq(
   "org.apache.logging.log4j" % "log4j-core" % "2.20.0" % Optional,
   "org.luaj" % "luaj-jse" % "3.0.1",
   "com.typesafe.play" %% "play-json" % "2.10.3",
-  "com.lihaoyi"   %% "ujson" % Versions.upickle
+  "com.lihaoyi"   %% "ujson" % "3.1.3"
 )
 enablePlugins(JavaAppPackaging, LauncherJarPlugin)

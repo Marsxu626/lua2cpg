@@ -12,7 +12,7 @@ lua2cpg是扩展Joern对Lua语言支持的一个CPG前端。
 
 1. 将lua2cpg项目复制到本地Joern环境的`joern/joern-cli/frontends/`目录下
 
-2. 配置joern-cli下的`build.sbt`文件
+2. 配置`joern/joern-cli/`下的`build.sbt`文件
 
    + 在相应位置添加以下两行配置内容：
 
@@ -24,15 +24,20 @@ lua2cpg是扩展Joern对Lua语言支持的一个CPG前端。
 
    ![1](./图片/1.png)
 
-3. 配置joern目录下的`build.sbt`文件
+3. 配置`joern/`目录下的`build.sbt`文件
 
-   + 相关位置添加以下内容
+   + 相关位置添加以下两个内容
 
    ```scala
    lazy val lua2cpg           = Projects.lua2cpg
+   
+   lazy val aggregatedProjects: Seq[ProjectReference] = Seq(
+     ……//省略
+     lua2cpg
+   )
    ```
 
-4. 配置`/Joern/project`目录下的Projects文件
+4. 配置`joern/project/`目录下的`Projects`文件
 
    + 相关位置添加以下内容
 
@@ -60,7 +65,7 @@ lua2cpg是扩展Joern对Lua语言支持的一个CPG前端。
 
 ### 第三步：joernParse相关配置
 
-位于`joern\joern-cli\src\main\scala\io\joern\joerncli\console`下的JoernParse是负责源码生成Cpg的相关控制任务。其会根据输入的文件名判断使用何种前端进行转换。以下对Lua语言接入进行配置。
+位于`joern\joern-cli\src\main\scala\io\joern\joerncli\console`下的`JoernParse`是负责源码生成Cpg的相关控制程序。其会根据输入的文件名判断使用何种前端进行转换。以下对Lua语言接入进行配置。
 
 1. 在`joern\console\src\main\scala\io\joern\console\cpgcreation`目录下，添加一个名为`LuaCpgGenerator.scala`文件，内容为：
 
@@ -87,7 +92,7 @@ lua2cpg是扩展Joern对Lua语言支持的一个CPG前端。
 2. 在同样目录下的`package.scala`文件中，对应地方添加以下两行内容
 
    ```scala
-   case f if f.endsWith(".lua")    => Some("Lua")
+   case f if f.endsWith(".lua")    => Some("LUA")
    ```
 
    ![5](./图片/5.png)
