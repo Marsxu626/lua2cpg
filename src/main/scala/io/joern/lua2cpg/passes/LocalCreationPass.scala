@@ -31,7 +31,7 @@ abstract class LocalCreationPass[ScopeType <: AstNode](cpg: Cpg)
   override protected def column(node: AstNode)                     = node.columnNumber
   override protected def lineEnd(node: AstNode): Option[Integer]   = None
   override protected def columnEnd(node: AstNode): Option[Integer] = None
-  override protected def code(node: AstNode): String               = node.code
+//  override protected def code(node: AstNode): String               = None
 
   protected def getIdentifiersInScope(node: AstNode): List[Identifier] = {
     node match {

@@ -24,6 +24,7 @@ class Lua2Cpg extends X2CpgFrontend[Config] {
       new AnyTypePass(cpg).createAndApply()
       TypeNodePass.withTypesFromCpg(cpg).createAndApply()
       LocalCreationPass.allLocalCreationPasses(cpg).foreach(_.createAndApply())
+      println("Success!")
     }
   }
 }
